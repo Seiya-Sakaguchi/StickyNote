@@ -19,7 +19,7 @@ body {
     height: 100vh;
 }
 
-.title {
+#title {
     background-color: #fff;
     text-align: center;
     padding: 1rem;
@@ -32,7 +32,7 @@ body {
     font-size: 2rem;
 }
 
-.input_box {
+#input_box {
     text-align: center;
     padding: 1rem;
     border: 2px solid #FF8B20;

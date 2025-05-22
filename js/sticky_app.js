@@ -1,3 +1,26 @@
+const title = document.querySelector("#title");
+
+const keyframes = {
+    opacity: [0, 1],
+    translate: ["0 -50px", 0]
+};
+const options = {
+    duration: 2000,
+    easing: "ease-out",
+};
+title.animate(keyframes, options);
+
+const input_box = document.querySelector("#input_box")
+
+const keyframe = {
+    opacity: [0, 1],
+    translate: ["0 50px", 0]
+};
+
+input_box.animate(keyframe, options);
+
+
+
 const params = new URLSearchParams(window.location.search);
 const username = params.get("user");
 const storageKey = `sticky_${username}`;

@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <link href="css/style.css" rel="stylesheet">
+    <script src="js/sticky_app.js" defer></script>
     <title>StickyNoteApp</title>
 </head>
 
 <body>
     <div class="wrapper1">
-        <div class="title">
+        <div id="title">
             <h1 class="page_title">Sticky Note App</h1>
             <h3>業務効率化ツール</h3>
         </div>
 
-        <div class="input_box">
+        <div id="input_box">
             <p>名前を入力してください</p>
             <input type="text" id="username" placeholder="佐藤">
             <button onclick="userName()">始める</button>
