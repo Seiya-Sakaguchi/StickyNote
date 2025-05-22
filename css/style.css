@@ -1,0 +1,265 @@
+body {
+    background-image: url(../images/stickyapp_mobile.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: 'Rounded M PLUS 1c', 'Noto Sans JP', sans-serif;
+}
+
+.wrapper1 {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 100vh;
+}
+
+.title {
+    background-color: #fff;
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid #41dd87;
+    border-radius: 8px;
+    box-shadow: 10px 10px 0 0 #41dd87;
+}
+
+.page_title {
+    font-size: 2rem;
+}
+
+.input_box {
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid #FF8B20;
+    border-radius: 8px;
+    box-shadow: 10px 10px 0 0 #FF8B20;
+}
+
+input {
+    border: 2px solid #777;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+button {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    color: white;
+    background-color: #FF8B20;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    transition: 0.5;
+    transition-timing-function: ease;
+}
+
+button:hover {
+  scale: 1.2;
+}
+
+
+/* main */
+.wrapper2 {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.8rem;
+}
+
+#userLabel {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 0.5rem;
+}
+
+.sticky_area {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: small;
+}
+
+.row button {
+    color: #000;
+    background-color: #B0E2FF;
+    border-radius: 8px;
+    padding: 0.2rem;
+    transition: 0.5;
+    transition-timing-function: ease;
+}
+
+.middle button {
+    color: #000;
+    background-color: #d7ffd7;
+    border-radius: 8px;
+    padding: 0.2rem;
+    transition: 0.5;
+    transition-timing-function: ease;
+}
+
+.high button {
+    color: #000;
+    background-color: #ffc9d2;
+    border-radius: 8px;
+    padding: 0.2rem;
+    transition: 0.5;
+    transition-timing-function: ease;
+}
+
+.task {
+  width: 140px;
+  min-height: 20px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+  font-size: 0.7rem;
+  word-break: break-word;
+  /* デフォルトカラーを設定 */
+  background-color: #ffff88;
+  transition: transform 0.1s ease;
+}
+/* 付箋の動き */
+.sticky:hover {
+  transform: scale(1.02);
+}
+
+
+/* 通常業務の付箋 */
+.right-blue {
+  background-color: #B0E2FF;
+}
+/* 共有・報告業務の付箋 */
+.right-green {
+  background-color: #d7ffd7;
+}
+/* 緊急業務の付箋 */
+.pink {
+  background-color: #ffc9d2;
+}
+
+
+.bord_area {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.column {
+    text-align: center;
+    height: 19vh;
+    width: 90vw;
+    border: 2px solid #777;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+h2 {
+    font-size: medium;
+}
+
+
+
+
+
+
+
+
+
+
+/* PCブラウザ仕様(タブレット) */
+@media (min-width: 800px) {
+    body {
+        background-image: url(../images/sample03.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
+
+    .wrapper1 {
+        max-width: 1980px;
+        margin-top: 120px;
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        height: 100vh;
+    }
+
+    .page_title {
+        font-size: 5rem;
+    }
+
+    .wrapper2 {
+        max-width: 1980px;
+        margin: auto;
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .main_title {
+        font-size: 2.5rem;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .sticky_area {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .task {
+        width: 200px;
+        min-height: 40px;
+        margin: 10px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+        font-size: 14px;
+        line-height: 1.4;
+        word-break: break-word;
+        /* デフォルトカラーを設定 */
+        background-color: #ffff88;
+        position: relative;
+        transition: transform 0.1s ease;
+    }
+
+    .bord_area {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: space-around;
+        margin-top: 3rem;
+    }
+
+    .column {
+        margin: 0.5rem;
+        text-align: center;
+        height: 70vh;
+        width: 33vw;
+        border: 2px solid #777;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+}

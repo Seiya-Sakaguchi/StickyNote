@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <title>StickyNoteApp</title>
+</head>
+<body>
+    <div class="wrapper2">
+        <h1 class="main_title">今 日 の 予 定</h1>
+        <p id="userLabel"></p>
+
+        <div class="sticky_area">
+            <div class="row">
+                <h3>業務レベル：低</h3>
+                    <input type="text" id="input-low" placeholder="例：担当の清掃箇所">
+                    <button onclick="addTask('low')">追加</button>
+            </div>
+
+            <div class="middle">
+                <h3>業務レベル：中</h3>
+                    <input type="text" id="input-normal" placeholder="例：問い合わせ返信">
+                    <button onclick="addTask('normal')">追加</button>
+            </div>
+            
+            <div class="high">
+                <h3>業務レベル：高</h3>
+                    <input type="text" id="input-high" placeholder="例：月末書類作成">
+                    <button onclick="addTask('high')">追加</button>
+            </div>
+        </div>
+
+        <div class="bord_area">
+            <div class="column" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>着手前</h2>
+                <div id="stage-todo"></div>
+            </div>
+
+            <div class="column" id="doing" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>進行中</h2>
+            </div>
+
+            <div class="column" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h2>完了</h2>
+            </div>
+        </div>
+    </div>
+    <script src="js/sticky_app.js"></script>
+</body>
+</html>

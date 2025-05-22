@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <title>StickyNoteApp</title>
+</head>
+
+<body>
+    <div class="wrapper1">
+        <div class="title">
+            <h1 class="page_title">Sticky Note App</h1>
+            <h3>業務効率化ツール</h3>
+        </div>
+
+        <div class="input_box">
+            <p>名前を入力してください</p>
+            <input type="text" id="username" placeholder="佐藤">
+            <button onclick="userName()">始める</button>
+        </div>
+    </div>
+
+    <script>
+        const userName = () => {
+            const username = document.getElementById("username").value.trim();
+            if (username) {
+                location.href = `main.html?user=${encodeURIComponent(username)}`;
+            } else {
+                alert("ユーザー名を入力してください");
+            }
+        }
+    </script>
+</body>
+</html>
