@@ -29,6 +29,40 @@ const username = params.get("user");
 const storageKey = `sticky_${username}`;
 document.getElementById("userLabel").textContent = `ユーザー: ${username}`;
 
+// sticky_areaの表示の変更
+const addTask = (type) => {
+  // 画面幅でどちらのinputを使うかを決定
+  const isMobile = window.innerWidth < 800;
+  // id名を動的に組み立て
+  const suffix = isMobile ? '_mb' : '_pc';
+  const inputId = `input-${type}${suffix}`;
+  const stickyColor = {
+    low: "right-blue",
+    normal: "right-green",
+    high: "pink"
+  };
+
+  const input = document.getElementById(inputId);
+  if (!input) return; // 万一見つからなければ何もしない
+
+  const comment = input.value;
+  if (comment.trim() === "") return;
+
+  // 付箋生成
+  const task = createTaskElement(comment);
+  task.classList.add("sticky", stickyColor[type]);
+
+  // stage-todoに追加
+  document.getElementById("stage-todo").appendChild(task);
+  input.value = "";
+};
+
+document.getElementById('open_btn').onclick = () => {
+  document.getElementById('slide_menu').classList.add('active');
+};
+document.getElementById('close_btn').onclick = () => {
+  document.getElementById('slide_menu').classList.remove('active');
+};
 
 
 let taskId = 0;
@@ -82,35 +116,6 @@ const createTaskElement = (text) => {
 
   return task;
 };
-
-// sticky_areaの表示の変更
-const addTask = (type) => {
-  // 画面幅でどちらのinputを使うかを決定
-  const isMobile = window.innerWidth < 800;
-  // id名を動的に組み立て
-  const suffix = isMobile ? '_mb' : '_pc';
-  const inputId = `input-${type}${suffix}`;
-  const stickyColor = {
-    low: "right-blue",
-    normal: "right-green",
-    high: "pink"
-  };
-
-  const input = document.getElementById(inputId);
-  if (!input) return; // 万一見つからなければ何もしない
-
-  const comment = input.value;
-  if (comment.trim() === "") return;
-
-  // 付箋生成
-  const task = createTaskElement(comment);
-  task.classList.add("sticky", stickyColor[type]);
-
-  // stage-todoに追加
-  document.getElementById("stage-todo").appendChild(task);
-  input.value = "";
-};
-
 
 // 付箋の移動を許可（デフォルトは禁止行為）
 const allowDrop = (ev) => {
