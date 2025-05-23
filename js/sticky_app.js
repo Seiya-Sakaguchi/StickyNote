@@ -1,3 +1,4 @@
+// トップページ
 const title = document.querySelector("#title");
 if(title) {
   const keyframes = {
@@ -21,6 +22,8 @@ if(input_box) {
 }
 
 
+
+// 以下メインページ
 const params = new URLSearchParams(window.location.search);
 const username = params.get("user");
 const storageKey = `sticky_${username}`;
@@ -37,9 +40,8 @@ const createTaskElement = (text) => {
   task.draggable = true;
   task.id = `task-${taskId++}`;
   task.ondragstart = drag;
-
+  // スマホスワイプ対応
   let offsetX = 0, offsetY = 0, moving = false;
-
   task.addEventListener('touchstart', function(e) {
     const touch = e.touches[0];
     offsetX = touch.clientX - task.getBoundingClientRect().left;
@@ -76,10 +78,12 @@ const createTaskElement = (text) => {
       // カラム外なら位置を元に戻すなど必要に応じて
     }
   })
+  // ここまでスマホ対応変更箇所
 
   return task;
 };
 
+// sticky_areaの表示の変更
 const addTask = (type) => {
   // 画面幅でどちらのinputを使うかを決定
   const isMobile = window.innerWidth < 800;
