@@ -8,31 +8,70 @@
     <script src="js/sticky_app.js" defer></script>
     <title>StickyNoteApp</title>
 </head>
+
 <body>
     <div class="wrapper2">
         <h1 class="main_title">今 日 の 予 定</h1>
         <p id="userLabel"></p>
+        <div id="sticky_area_mb">
+            <!-- プラスマークSVG -->
+            <svg id="open_btn" width="48" height="48" viewBox="0 0 48 48" fill="none" style="cursor:pointer;">
+                <circle cx="24" cy="24" r="24" fill="#00aaff"/>
+                <rect x="22" y="12" width="4" height="24" rx="2" fill="#fff"/>
+                <rect x="12" y="22" width="24" height="4" rx="2" fill="#fff"/>
+            </svg>
 
-        <div class="sticky_area">
+            <div id="slide_menu">
+                <!-- バツマークSVG -->
+                <svg id="close_btn" width="40" height="40" viewBox="0 0 40 40" fill="none" style="cursor:pointer;">
+                    <circle cx="20" cy="20" r="20" fill="#f5f5f5"/>
+                    <rect x="12" y="18" width="16" height="4" rx="2" transform="rotate(45 20 20)" fill="#ff4444"/>
+                    <rect x="12" y="18" width="16" height="4" rx="2" transform="rotate(-45 20 20)" fill="#ff4444"/>
+                </svg>
+
+                <div id="sticky_area">
+                    <div class="row">
+                        <h3>業務レベル：低</h3>
+                            <input type="text" id="input-low_mb" placeholder="例：担当の清掃箇所">
+                            <button onclick="addTask('low')">追加</button>
+                    </div>
+
+                    <div class="middle">
+                        <h3>業務レベル：中</h3>
+                            <input type="text" id="input-normal_mb" placeholder="例：問い合わせ返信">
+                            <button onclick="addTask('normal')">追加</button>
+                    </div>
+                    
+                    <div class="high">
+                        <h3>業務レベル：高</h3>
+                            <input type="text" id="input-high_mb" placeholder="例：月末書類作成">
+                            <button onclick="addTask('high')">追加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="sticky_area_pc">
             <div class="row">
                 <h3>業務レベル：低</h3>
-                    <input type="text" id="input-low" placeholder="例：担当の清掃箇所">
+                    <input type="text" id="input-low_pc" placeholder="例：担当の清掃箇所">
                     <button onclick="addTask('low')">追加</button>
             </div>
 
             <div class="middle">
                 <h3>業務レベル：中</h3>
-                    <input type="text" id="input-normal" placeholder="例：問い合わせ返信">
+                    <input type="text" id="input-normal_pc" placeholder="例：問い合わせ返信">
                     <button onclick="addTask('normal')">追加</button>
             </div>
             
             <div class="high">
                 <h3>業務レベル：高</h3>
-                    <input type="text" id="input-high" placeholder="例：月末書類作成">
+                    <input type="text" id="input-high_pc" placeholder="例：月末書類作成">
                     <button onclick="addTask('high')">追加</button>
             </div>
         </div>
-
+        
         <div class="bord_area">
             <div class="column" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <h2>着手前</h2>

@@ -1,24 +1,24 @@
 const title = document.querySelector("#title");
-
-const keyframes = {
-    opacity: [0, 1],
-    translate: ["0 -50px", 0]
-};
-const options = {
-    duration: 2000,
-    easing: "ease-out",
-};
-title.animate(keyframes, options);
+if(title) {
+  const keyframes = {
+      opacity: [0, 1],
+      translate: ["0 -50px", 0]
+  };
+  const options = {
+      duration: 2000,
+      easing: "ease-out",
+  };
+  title.animate(keyframes, options);
+}
 
 const input_box = document.querySelector("#input_box")
-
-const keyframe = {
-    opacity: [0, 1],
-    translate: ["0 50px", 0]
-};
-
-input_box.animate(keyframe, options);
-
+if(input_box) {
+  const keyframe = {
+      opacity: [0, 1],
+      translate: ["0 50px", 0]
+  };
+  input_box.animate(keyframe, options);
+}
 
 
 const params = new URLSearchParams(window.location.search);
@@ -37,31 +37,76 @@ const createTaskElement = (text) => {
   task.draggable = true;
   task.id = `task-${taskId++}`;
   task.ondragstart = drag;
+
+  let offsetX = 0, offsetY = 0, moving = false;
+
+  task.addEventListener('touchstart', function(e) {
+    const touch = e.touches[0];
+    offsetX = touch.clientX - task.getBoundingClientRect().left;
+    offsetY = touch.clientY - task.getBoundingClientRect().top;
+    moving = true;
+
+    // 必要に応じて絶対配置へ
+    task.style.position = 'absolute';
+    task.style.zIndex = 1000;
+  });
+
+  task.addEventListener('touchmove', function(e) {
+    if (!moving) return;
+    const touch = e.touches[0];
+    task.style.left = (touch.clientX - offsetX) + 'px';
+    task.style.top = (touch.clientY - offsetY) + 'px';
+    e.preventDefault();
+  });
+
+  task.addEventListener('touchend', function(e) {
+    moving = false;
+    const touch = e.changedTouches[0];
+    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+    const column = dropTarget ? dropTarget.closest('.column') : null;
+    if (column) {
+      column.appendChild(task);
+      // スタイルを初期化
+      task.style.position = '';
+      task.style.left = '';
+      task.style.top = '';
+      task.style.zIndex = '';
+      saveData(); // 状態保存
+    } else {
+      // カラム外なら位置を元に戻すなど必要に応じて
+    }
+  })
+
   return task;
 };
 
 const addTask = (type) => {
-  const inputId = {
-    low: "input-low",
-    normal: "input-normal",
-    high: "input-high"
-  };
+  // 画面幅でどちらのinputを使うかを決定
+  const isMobile = window.innerWidth < 800;
+  // id名を動的に組み立て
+  const suffix = isMobile ? '_mb' : '_pc';
+  const inputId = `input-${type}${suffix}`;
   const stickyColor = {
     low: "right-blue",
     normal: "right-green",
     high: "pink"
   };
-// 業務レベルを取得して入力されたコメントが空文字じゃなければリターンする
-  const input = document.getElementById(inputId[type]);
+
+  const input = document.getElementById(inputId);
+  if (!input) return; // 万一見つからなければ何もしない
+
   const comment = input.value;
   if (comment.trim() === "") return;
-// 動かせる付箋に色を追加
+
+  // 付箋生成
   const task = createTaskElement(comment);
   task.classList.add("sticky", stickyColor[type]);
-// stage-todoに付箋を追加して表示、そのあと入力欄はリセット
+
+  // stage-todoに追加
   document.getElementById("stage-todo").appendChild(task);
   input.value = "";
-}
+};
+
 
 // 付箋の移動を許可（デフォルトは禁止行為）
 const allowDrop = (ev) => {
