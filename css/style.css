@@ -4,11 +4,14 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     font-family: 'Rounded M PLUS 1c', 'Noto Sans JP', sans-serif;
 }
 
 .wrapper1 {
-    max-width: 1200px;
+    max-width: 799px;
     margin: auto;
     padding: 0 1.5rem;
     display: flex;
@@ -64,7 +67,7 @@ button:hover {
 
 /* main */
 .wrapper2 {
-    max-width: 1200px;
+    max-width: 799px;
     margin: auto;
     padding: 0 1.5rem;
     display: flex;
@@ -243,6 +246,9 @@ h2 {
         background-size: cover;
         background-position: center;
         height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
     }
 
     .wrapper1 {
@@ -267,6 +273,7 @@ h2 {
         padding: 0 1.5rem;
         display: flex;
         flex-direction: column;
+        height: 100vh;
     }
 
 
@@ -316,18 +323,43 @@ h2 {
         transition: transform 0.1s ease;
     }
 
+    /* 付箋の動き */
+    .sticky:hover {
+        transform: scale(1.02);
+    }
+
+
+    /* 通常業務の付箋 */
+    .right-blue {
+        background-color: #B0E2FF;
+    }
+    /* 共有・報告業務の付箋 */
+    .right-green {
+        background-color: #d7ffd7;
+    }
+    /* 緊急業務の付箋 */
+    .pink {
+        background-color: #ffc9d2;
+    }
+
     .bord_area {
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
         text-align: center;
         justify-content: space-around;
         margin-top: 3rem;
+        height: 100%;
+        margin-bottom: 1rem;
     }
 
     .column {
+        flex: 1;
         margin: 0.5rem;
+        min-height: 0;
+        overflow: auto;
         text-align: center;
-        height: 70vh;
+        height: 60vh;
         width: 33vw;
         border: 2px solid #777;
         border-radius: 8px;

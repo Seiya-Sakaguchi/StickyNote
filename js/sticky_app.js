@@ -67,25 +67,37 @@ document.getElementById('close_btn').onclick = () => {
 
 let taskId = 0;
 // 移動可能な付箋を作成（作成した付箋にはIDを付与）
-const createTaskElement = (text) => {
+const createTaskElement = (text, colorClass = "") => {
   const task = document.createElement("div");
   task.classList.add("task");
+  if (colorClass) {
+    task.classList.add(colorClass);
+    task.dataset.color = colorClass;  // ← データ属性で保持
+  }
   task.textContent = text;
   task.draggable = true;
   task.id = `task-${taskId++}`;
   task.ondragstart = drag;
   // スマホスワイプ対応
   let offsetX = 0, offsetY = 0, moving = false;
-  task.addEventListener('touchstart', function(e) {
-    const touch = e.touches[0];
-    offsetX = touch.clientX - task.getBoundingClientRect().left;
-    offsetY = touch.clientY - task.getBoundingClientRect().top;
-    moving = true;
-
-    // 必要に応じて絶対配置へ
-    task.style.position = 'absolute';
-    task.style.zIndex = 1000;
+  task.addEventListener('touchend', function(e) {
+    moving = false;
+    const touch = e.changedTouches[0];
+    const dropTarget = document.elementFromPoint(touch.clientX, touch.clientY);
+    const column = dropTarget ? dropTarget.closest('.column') : null;
+    if (column) {
+      column.appendChild(task);
+      task.style.position = 'relative'; // ← PCと同じように相対配置に変更
+      task.style.left = '';
+      task.style.top = '';
+      task.style.zIndex = '';
+      saveData();
+    } else {
+      // どこにもドロップされなかった → 元の場所 orその場に固定
+      task.style.position = 'absolute'; // このまま固定しておく案もあり
+    }
   });
+
 
   task.addEventListener('touchmove', function(e) {
     if (!moving) return;
@@ -140,7 +152,7 @@ const saveData = () => {
     const column = document.getElementById(stage);
     data[stage] = Array.from(column.children)
       .filter(el => el.classList.contains("task"))
-      .map(el => el.textContent);
+      .map(el => ({ text: el.textContent, color: el.dataset.color || ""}));
   });
   sessionStorage.setItem(storageKey, JSON.stringify(data));
 }
@@ -151,9 +163,15 @@ const loadData = () => {
   const data = JSON.parse(saved);
   ["todo", "doing", "done"].forEach(stage => {
     const column = document.getElementById(stage);
-    data[stage].forEach(text => {
-      const task = createTaskElement(text);
+    data[stage].forEach(item => {
+    // itemが文字列かオブジェクトかを判定
+    if (typeof item === "string") {
+      const task = createTaskElement(item); // 旧形式
       column.appendChild(task);
+    } else {
+      const task = createTaskElement(comment, stickyColor[type]);
+      task.classList.add("sticky");
+    }
     });
   });
 }
