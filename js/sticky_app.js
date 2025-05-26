@@ -18,6 +18,10 @@ if(input_box) {
       opacity: [0, 1],
       translate: ["0 50px", 0]
   };
+  const options = {
+      duration: 2000,
+      easing: "ease-out",
+  };
   input_box.animate(keyframe, options);
 }
 
@@ -74,7 +78,15 @@ const createTaskElement = (text, colorClass = "") => {
     task.classList.add(colorClass);
     task.dataset.color = colorClass;  // ← データ属性で保持
   }
-  task.textContent = text;
+  const delBtn = document.createElement('span');
+  delBtn.className = 'delete-btn';
+  delBtn.title = '削除';
+  delBtn.textContent = '×';
+  task.appendChild(delBtn);
+  const stickyContent = document.createElement('div');
+  stickyContent.className = 'sticky-content';
+  stickyContent.textContent = text;
+  task.appendChild(stickyContent);
   task.draggable = true;
   task.id = `task-${taskId++}`;
   task.ondragstart = drag;
@@ -128,6 +140,16 @@ const createTaskElement = (text, colorClass = "") => {
 
   return task;
 };
+
+document.querySelector('.bord_area').addEventListener('click', function(e) {
+  if (e.target.classList.contains('delete-btn')) {
+    const task = e.target.closest('.task');
+    if (task) {
+      task.remove();
+      saveData(); // 削除後に保存
+    }
+  }
+});
 
 // 付箋の移動を許可（デフォルトは禁止行為）
 const allowDrop = (ev) => {

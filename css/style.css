@@ -32,7 +32,7 @@ body {
 }
 
 .page_title {
-    font-size: 2rem;
+    font-size: 2.3rem;
 }
 
 #input_box {
@@ -43,10 +43,11 @@ body {
     box-shadow: 10px 10px 0 0 #FF8B20;
 }
 
-input {
+#input_box input {
     border: 2px solid #777;
     border-radius: 8px;
     background-color: #fff;
+    font-size: 0.8rem;
 }
 
 button {
@@ -141,7 +142,6 @@ button:hover {
     margin-top: 100px;
     text-align: center;
     font-size: medium;
-    /* color: currentColor; */
 }
 
 .row, .middle, .high {
@@ -152,6 +152,9 @@ button:hover {
 
 input {
     font-size: 1.5rem;
+    border: 2px solid #777;
+    border-radius: 8px;
+    background-color: #fff;
 }
 .row button {
     font-size: large;
@@ -186,7 +189,7 @@ input {
 
 .task {
   width: 140px;
-  min-height: 20px;
+  min-height: 30px;
   margin: 5px;
   padding: 5px;
   border-radius: 8px;
@@ -214,6 +217,30 @@ input {
 /* 緊急業務の付箋 */
 .pink {
   background-color: #ffc9d2;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 4px; right: 8px;
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  font-size: 14px;
+  color: #888;
+  cursor: pointer;
+  z-index: 2;
+  transition: background .2s, color .2s;
+}
+.task {
+  position: relative;
+  /* 既存のスタイルに追加してください */
+}
+.delete-btn:hover {
+  background: #ff8b20;
+  color: #fff;
+  border-color: #ff8b20;
 }
 
 
@@ -276,6 +303,13 @@ h2 {
         font-size: 5rem;
     }
 
+    #input_box input {
+        border: 2px solid #777;
+        border-radius: 8px;
+        background-color: #fff;
+        font-size: 1.2rem;
+    }
+
     .wrapper2 {
         max-width: 1980px;
         margin: auto;
@@ -312,8 +346,11 @@ h2 {
         display: block;
     }
 
-    input {
+    #sticky_area_pc input {
         font-size: 1.3rem;
+        border: 2px solid #777;
+        border-radius: 8px;
+        background-color: #fff;
     }
     
     .task {
@@ -350,6 +387,9 @@ h2 {
     .pink {
         background-color: #ffc9d2;
     }
+
+
+
 
     .bord_area {
         display: flex;
