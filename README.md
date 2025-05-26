@@ -6,8 +6,12 @@
 
 - 業務効率化（業務漏れ防止・進捗可視化・チーム連携）
 - 資源保護（紙の付箋を使わない、デジタル化によるエコ化）
-![stickyapp_top](https://github.com/user-attachments/assets/5dacb5fe-0cf4-45b5-b792-d6d8b6355d61)
-![stickyapp_main](https://github.com/user-attachments/assets/a5e56b27-513b-46f6-a6de-20b55e03f983)
+![PC_top](https://github.com/user-attachments/assets/9a89a9c2-36cc-4bd6-aa23-fe62ae4a7ba2)
+![PC_main](https://github.com/user-attachments/assets/9a452f9b-a70d-4438-8ad7-a0bbc081396f)
+![mobile_top](https://github.com/user-attachments/assets/5b06655e-cbca-4951-94d8-b333ef6b6604)
+![mobile_main](https://github.com/user-attachments/assets/9a333865-e02d-40ad-a478-149ad64d497f)
+![mobile_main_s](https://github.com/user-attachments/assets/c8be75b1-acff-4777-8997-47354959541a)
+
 
 ## 想定ユーザー
 
