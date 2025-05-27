@@ -262,6 +262,11 @@ input {
     box-shadow: 10px 7px 0 0 #41dd87;
     border-radius: 8px;
     background-color: #fff;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;        /* 折り返し許可 */
+    gap: 8px;               /* 付箋同士の間隔 */
+    align-content: flex-start;
 }
 
 h2 {
