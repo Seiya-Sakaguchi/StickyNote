@@ -282,24 +282,23 @@ h2 {
     body {
         background-image: url(../images/sample03.png);
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: 100% 100%;
         background-position: center;
         height: 100vh;
         margin: 0;
         padding: 0;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
 
     .wrapper1 {
         max-width: 1980px;
-        margin-top: 120px;
         padding: 0 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2rem;
-        height: 100vh;
+        height: 115vh;
     }
 
     .page_title {
