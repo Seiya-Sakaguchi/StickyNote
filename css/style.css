@@ -245,7 +245,7 @@ input {
 
 
 .bord_area {
-    margin-top: 1rem;
+    margin-top: 0.3rem;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -255,8 +255,11 @@ input {
 .column {
     text-align: center;
     height: 26vh;
+    margin: 0.4rem;
     /* width: 90vw; */
-    border: 2px solid #777;
+    border: 2px solid #41dd87;
+    border-radius: 8px;
+    box-shadow: 10px 7px 0 0 #41dd87;
     border-radius: 8px;
     background-color: #fff;
 }
@@ -410,7 +413,9 @@ h2 {
         text-align: center;
         height: 60vh;
         width: 33vw;
-        border: 2px solid #777;
+        border: 2px solid #41dd87;
+        border-radius: 8px;
+        box-shadow: 10px 10px 0 0 #41dd87;
         border-radius: 8px;
         background-color: #fff;
     }
