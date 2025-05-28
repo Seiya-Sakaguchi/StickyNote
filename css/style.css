@@ -269,6 +269,27 @@ input {
     align-content: flex-start;
 }
 
+#todo {
+    background-image: url(../images/1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#doing {
+    background-image: url(../images/2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#done {
+    background-image: url(../images/3.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 h2 {
     font-size: medium;
 }
@@ -424,4 +445,25 @@ h2 {
         background-color: #fff;
     }
 
+    #todo {
+        background-image: url(../images/1.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+    }
+
+    #doing {
+        background-image: url(../images/2.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+    }
+
+    #done {
+        background-image: url(../images/3.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+
+    }
 }
